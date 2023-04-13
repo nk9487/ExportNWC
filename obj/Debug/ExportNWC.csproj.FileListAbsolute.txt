@@ -4,3 +4,9 @@ D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.csproj.AssemblyReference.c
 D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.csproj.CoreCompileInputs.cache
 D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.dll
 D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.pdb
+D:\RevitAddin\NWCExport\nk9487\ExportNWC\bin\Debug\ExportNWC.dll
+D:\RevitAddin\NWCExport\nk9487\ExportNWC\bin\Debug\ExportNWC.pdb
+D:\RevitAddin\NWCExport\nk9487\ExportNWC\obj\Debug\ExportNWC.csproj.AssemblyReference.cache
+D:\RevitAddin\NWCExport\nk9487\ExportNWC\obj\Debug\ExportNWC.csproj.CoreCompileInputs.cache
+D:\RevitAddin\NWCExport\nk9487\ExportNWC\obj\Debug\ExportNWC.dll
+D:\RevitAddin\NWCExport\nk9487\ExportNWC\obj\Debug\ExportNWC.pdb
