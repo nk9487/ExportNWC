@@ -15,27 +15,18 @@ namespace ExportNWC
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
+
+
+    //Test @ Class1 adsa 
+
     public class Class1 : IExternalCommand
     {
-        public Result Execute(ExternalCommandData commandData,
-            ref string message,
-            ElementSet elements)
+        /// <inheritdoc/>
+        //MainWindow test = new MainWindow();
+        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            /*//Get application and document objects
-            UIApplication uiapp = commandData.Application;
-            Document doc = uiapp.ActiveUIDocument.Document;
-
-            //Define a reference Object to accept the pick result
-            Reference pickedref = null;
-
-            //Pick a group
-            Selection sel = uiapp.ActiveUIDocument.Selection;
-            pickedref = sel.PickObject(ObjectType.Element, "Please select a group");
-            Element elem = doc.GetElement(pickedref);
-            Group group = elem as Group;
-
-            //Pick point
-            XYZ point = sel.PickPoint("Please pick a point to place group");
+            UIDocument uiDoc = commandData.Application.ActiveUIDocument;
+            Document doc = uiDoc.Document;
 
             //Place the group
             Transaction trans = new Transaction(doc);
@@ -44,7 +35,10 @@ namespace ExportNWC
             trans.Commit();*/
             TaskDialog.Show("WELCOME!!","DEV");
 
+            MainWindow window = new MainWindow();
+            TaskDialog.Show("WELCOME11", "DEV0");
             return Result.Succeeded;
+
         }
     }
 }

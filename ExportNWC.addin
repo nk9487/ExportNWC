@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>ExportNWC</Name>
+		<FullClassName>ExportNWC.App</FullClassName>
+		<Text>ExportNWC</Text>
+		<Description>THIS APP WILL EXPORT NWC</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>ExportNWC.dll</Assembly>
+		<AddInId>0171331E-2ED5-42B8-8891-968BF2840CB4</AddInId>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>ngk</VendorDescription>
+	</AddIn>
+</RevitAddIns>
+
