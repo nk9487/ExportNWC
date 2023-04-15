@@ -29,13 +29,10 @@ namespace ExportNWC
             Document doc = uiDoc.Document;
 
             //Place the group
-            Transaction trans = new Transaction(doc);
-            trans.Start("Lab");
-            doc.Create.PlaceGroup(point, group.GroupType);
-            trans.Commit();*/
+
             TaskDialog.Show("WELCOME!!","DEV");
 
-            MainWindow window = new MainWindow();
+            MainWindows window = new MainWindows(uiDoc);
             TaskDialog.Show("WELCOME11", "DEV0");
             return Result.Succeeded;
 
