@@ -28,7 +28,7 @@ namespace ExportNWC
         {
             
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
-            Document doc = uidoc.Document;
+            //Document doc = uidoc.Document;
 
     
             try { 
@@ -39,9 +39,9 @@ namespace ExportNWC
                // window.Export_Button
                 //then close window
                 //window.Close();
-                return Result.Succeeded;
 
-                
+
+                return Result.Succeeded;
             }
 
             catch (System.Exception e)
