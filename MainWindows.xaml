@@ -1,0 +1,72 @@
+﻿<Window x:Class="ExportNWC.MainWindows"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExportNWC"
+             mc:Ignorable="d" Height="auto" Width="800" ResizeMode="NoResize" SizeToContent="Height" Title="ExportNWC">
+
+    <Border Padding="15">
+        
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0">
+                    <Label Content=" Export Settings"/>
+                    <Separator Margin="0 3"/>
+                    <CheckBox x:Name="Convert_Element_Properties" Content="Convert Element Properties"  HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Convert_Linked_CAD_Formats" Content="Convert Linked CAD formats"  HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Export_Coordinate" Content="Coordinate(Uncheck for shared coordiante)"  HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Export_ElementID" Content="Export Element ID"  HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Divide_To_Level" Content="Divide File To Level"  HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Export_Link" Content="Export Link"  HorizontalAlignment="Left" Margin="0 3"  />
+                    <CheckBox x:Name="Export_Parts" Content="Export Part"  HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Export_Room_Attribute" Content="Export Room Attribute" HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Export_Room_Geometery" Content="Export Room Geometry" HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Export_Scope" Content="Export Scope(Model vs View )" HorizontalAlignment="Left" Margin="0 3"/>
+                    <CheckBox x:Name="Export_URl" Content="Export URL" HorizontalAlignment="Left" Margin="0 3"/>
+                    <CheckBox x:Name="Find_Missing_Material" Content="Find Missing Material" HorizontalAlignment="Left" Margin="0 3" />
+                    <CheckBox x:Name="Export_Naviswork_Parameters" Content="Naviswork Paramter(All)" HorizontalAlignment="Left" Margin="0 3"/>
+                    <Label Content="Default"/>
+                    <CheckBox x:Name="Default_Export_Setting" Content="Default" HorizontalAlignment="Left" Margin="0 3"/>
+                        
+                   
+      
+            </StackPanel>
+                
+            <StackPanel Grid.Column="2">
+                <Label Content=" View List"/>
+                <Separator Margin="0 3"/>
+               
+                <ScrollViewer  x:Name="Scroll_Views" MaxHeight="150">
+                    <ListBox Name="ViewList" ItemsSource="{Binding}" SelectionMode="Multiple">
+
+                       
+
+                    </ListBox>
+                    
+                    
+                </ScrollViewer>
+
+                <Button Content="Load All Views" Width="80" HorizontalAlignment="Left" Click="LoadViews"/>
+                
+                <Separator Margin="0 3"/>
+                <Label Content="Select Project Directory"/>
+                <TextBox  x:Name="File_Path"/>
+                <Button Content="Browse" Name="Export_Directory" Width="70"  HorizontalAlignment="Left" Click="SelectDirectory" />
+
+            </StackPanel>
+            <Button x:Name="Export_Button" Content="Export"  Width="50" HorizontalAlignment="Center" Click="ExportNWC" Grid.Row="1"/>
+            <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="487,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        </Grid>
+
+    </Border>
+
+</Window>

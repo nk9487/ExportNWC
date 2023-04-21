@@ -29,11 +29,7 @@ namespace ExportNWC
 
             button1.LargeImage = new BitmapImage(new Uri(iconPath + @"\img\free.png"));
 
-
-
-
             panelAddin.AddItem(button1);
-
 
             //Adding tool tip
             button1.ToolTip = "Export nwc";
