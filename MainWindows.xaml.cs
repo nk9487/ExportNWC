@@ -19,10 +19,13 @@ using Microsoft.Win32;
 using System.Windows.Forms;
 using System.Collections;
 using System.Security.Policy;
+<<<<<<< HEAD
 using Color = Autodesk.Revit.DB.Color;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+=======
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
 
 namespace ExportNWC
 {
@@ -35,6 +38,7 @@ namespace ExportNWC
         public UIDocument UIdoc { get; }
         public Document Doc { get; }
 
+<<<<<<< HEAD
         private string FILE_PATH;
         private bool CONVERT_ELEMENT_PROPERTIES = false;
         private bool CONVERT_LINK_CAD_FORMATS = false;
@@ -55,16 +59,25 @@ namespace ExportNWC
         private NavisworksCoordinates COORDINATE = NavisworksCoordinates.Shared;//SHARED OR INTERANL
         private NavisworksExportScope EXPORT_SCOPE = NavisworksExportScope.View ;//MODEL/VIEW;
 
+=======
+        private String FILE_PATH;
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
         //public ICollection<View3D> All_VIEWS;
         private FilteredElementCollector All_VIEWS;
         private ICollection<Element> VIEW;
         private ICollection<Element> USER_SELECTED_3DVIEW;
+<<<<<<< HEAD
         private List<Dictionary<ElementId, String>> viewsName;
 
         //File read and save
         private List<int> PROJECT_NUMBER = new List<int>() ;
         private ProjectSetting INDIVIDUAL_PROJECT_SETTING = new ProjectSetting() ;  
         private List<ProjectSetting>PROJECT_LIST = new List<ProjectSetting>(); //STORES ALL PROJECT WITH THEIR ID PATH COORDINATE
+=======
+    
+
+        private List<Dictionary<ElementId, String>> viewsName;
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
 
 
 
@@ -84,6 +97,7 @@ namespace ExportNWC
         //Use selected 3d view name as nwc file name
         private void ExportNWC(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             // Create a Material object with the desired color
             
 
@@ -110,13 +124,41 @@ namespace ExportNWC
             
             //check for selected
             
+=======
+            
+            NavisworksExportOptions nwcOptions = new NavisworksExportOptions();
+            nwcOptions.ConvertElementProperties = true;
+            nwcOptions.ConvertLinkedCADFormats = true;
+            nwcOptions.Coordinates = NavisworksCoordinates.Internal;//Desfualt is shared
+            nwcOptions.DivideFileIntoLevels = true;
+            nwcOptions.ExportElementIds = true;
+            nwcOptions.ExportLinks = true;
+            nwcOptions.ExportParts = true;
+            nwcOptions.ExportRoomAsAttribute = true;
+            nwcOptions.ExportRoomGeometry = true;
+            nwcOptions.ExportScope = NavisworksExportScope.Model; // Check 
+            nwcOptions.ExportUrls = true;
+            nwcOptions.FacetingFactor = 1.0;
+            nwcOptions.FindMissingMaterials = true;
+            
+            
+
+            nwcOptions.Parameters = NavisworksParameters.All;
+            //Doc.Export(FILE_PATH, @"test.nwc", nwcOptions);
+            // Doc.Export(@"C:\Users\namun\OneDrive\Desktop\NWC", @"test.nwc", nwcOptions);
+            
+            //
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
             foreach(var s in ViewList.SelectedItems)
             {
                 foreach (Element view in VIEW)
                 {
                     if(s.ToString() == view.Name.ToString())
                     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
                         nwcOptions.ViewId = view.Id;//view ID to be exported
                         Doc.Export(FILE_PATH, view.Name, nwcOptions);
 
@@ -129,6 +171,7 @@ namespace ExportNWC
 
         }
 
+<<<<<<< HEAD
 
 
         //Read and write a text file 
@@ -196,6 +239,30 @@ namespace ExportNWC
 
         }
 
+=======
+        /*private void GetSelectedView() 
+        {
+            //Compare selected list view with Element list
+            //if name of elements is same as selected view list add to a new collection called USER_SELECTED_3DVIEW
+            foreach(Element view in VIEW)
+            {
+                if (VIEW.Contains(ViewList.SelectedItems[]){
+                    USER_SELECTED_3DVIEW.Add(view);
+                }
+            }
+            
+            Console.WriteLine("This are count of selected views" ,ViewList.SelectedItems.Count);
+            foreach(Element view in ViewList.SelectedItems)
+            {
+                
+            }
+        
+        
+        }*/
+
+
+
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
         //Function to grab the directory to save the file.
         private void SelectDirectory(object sender, RoutedEventArgs e)
         {
@@ -222,7 +289,10 @@ namespace ExportNWC
         {
 
              All_VIEWS = new FilteredElementCollector(Doc).OfClass(typeof(View3D));
+<<<<<<< HEAD
             
+=======
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
 
             /*The data in a Revit document consists primarily of a collection of elements.An element usually corresponds to a single component of a building or drawing,
             such as a wall, door, or dimension, but it can also be something more abstract,like a wall type or a view. Every element in a document has a unique ID, represented by the ElementId class.
@@ -232,11 +302,18 @@ namespace ExportNWC
             //Create 3d views from the collector by filtering the 3D views
             //Note you can not instantiate View3D
             VIEW = All_VIEWS.ToElements();
+<<<<<<< HEAD
             
             viewsName = new List<Dictionary<ElementId, String>>();
             Dictionary<ElementId, String> dict1 = new Dictionary<ElementId, String>();
             foreach (Element view in VIEW)
             {   
+=======
+            viewsName = new List<Dictionary<ElementId, String>>();
+            Dictionary<ElementId, String> dict1 = new Dictionary<ElementId, String>();
+            foreach (Element view in VIEW)
+            {
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
                 dict1.Add( view.Id, view.Name);
               
             }
@@ -249,6 +326,7 @@ namespace ExportNWC
 
 
 
+<<<<<<< HEAD
         private void Convert_Element_Properties_Checked(object sender, RoutedEventArgs e)
         {
             CONVERT_ELEMENT_PROPERTIES = true;
@@ -385,6 +463,10 @@ namespace ExportNWC
         public int Id { get; set; }
         public string Path { get; set; }
         public string Coordinate { get; set; }
+=======
+        //Get list of 3d view from the current document and list it under UI
+
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
 
     }
 }

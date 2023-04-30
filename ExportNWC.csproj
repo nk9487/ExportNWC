@@ -74,7 +74,10 @@
     <Compile Include="Class1.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="ExportColor.cs" />
+=======
+>>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
     <Compile Include="MainWindows.xaml.cs">
       <DependentUpon>MainWindows.xaml</DependentUpon>
     </Compile>
