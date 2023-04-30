@@ -1,6 +1,0 @@
-D:\RevitAddin\NWCExport\ExportNWC\bin\Debug\ExportNWC.dll
-D:\RevitAddin\NWCExport\ExportNWC\bin\Debug\ExportNWC.pdb
-D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.csproj.AssemblyReference.cache
-D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.csproj.CoreCompileInputs.cache
-D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.dll
-D:\RevitAddin\NWCExport\ExportNWC\obj\Debug\ExportNWC.pdb
