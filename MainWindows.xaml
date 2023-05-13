@@ -7,24 +7,23 @@
              mc:Ignorable="d" Height="auto" Width="800" ResizeMode="NoResize" SizeToContent="Height" Title="ExportNWC">
 
     <Border Padding="15">
-<<<<<<< HEAD
 
         <Grid>
-=======
-        
-            <Grid>
->>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
             <Grid.ColumnDefinitions>
+                
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
+                
             </Grid.ColumnDefinitions>
+                
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+                
             <StackPanel Grid.Column="0">
-<<<<<<< HEAD
+
                 <Label Content=" Export Settings"/>
                 <Separator Margin="0 3"/>
                 <CheckBox x:Name="Convert_Element_Properties" Content="Convert Element Properties"  HorizontalAlignment="Left" Margin="0 3" Checked="Convert_Element_Properties_Checked" IsChecked="True" />
@@ -40,75 +39,46 @@
                 <CheckBox x:Name="Export_URl" Content="Export URL" HorizontalAlignment="Left" Margin="0 3" Checked="Export_URl_Checked" IsChecked="True"/>
                 <CheckBox x:Name="Find_Missing_Material" Content="Find Missing Material" HorizontalAlignment="Left" Margin="0 3" Checked="Find_Missing_Material_Checked" IsChecked="True" />
                 <Label Content="Default" />
-                <CheckBox x:Name="Default_Export_Setting" Content="Default" HorizontalAlignment="Left" Margin="0 3" Checked="Default_Export_Setting_Checked" Unchecked="Default_Export_Setting_Unchecked"/>
+                <CheckBox x:Name="Default_Export_Setting" Content="Default" HorizontalAlignment="Left" Margin="0 3" Checked="Default_Export_Setting_Checked" Unchecked="Default_Export_Setting_Unchecked" IsChecked="True"/>
 
 
-
-            </StackPanel>
-
-            <StackPanel Grid.Column="2">
-                <Label Content=" View List"/>
                 <Separator Margin="0 3"/>
-                <ScrollViewer  x:Name="Scroll_Views" MaxHeight="150">
-                    <ListBox Name="ViewList" ItemsSource="{Binding}" SelectionMode="Multiple"></ListBox>
-                </ScrollViewer>
-                <Button Content="Load All Views" Width="80" HorizontalAlignment="Left" Click="LoadViews"/>
-=======
-                    <Label Content=" Export Settings"/>
-                    <Separator Margin="0 3"/>
-                    <CheckBox x:Name="Convert_Element_Properties" Content="Convert Element Properties"  HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Convert_Linked_CAD_Formats" Content="Convert Linked CAD formats"  HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Export_Coordinate" Content="Coordinate(Uncheck for shared coordiante)"  HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Export_ElementID" Content="Export Element ID"  HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Divide_To_Level" Content="Divide File To Level"  HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Export_Link" Content="Export Link"  HorizontalAlignment="Left" Margin="0 3"  />
-                    <CheckBox x:Name="Export_Parts" Content="Export Part"  HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Export_Room_Attribute" Content="Export Room Attribute" HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Export_Room_Geometery" Content="Export Room Geometry" HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Export_Scope" Content="Export Scope(Model vs View )" HorizontalAlignment="Left" Margin="0 3"/>
-                    <CheckBox x:Name="Export_URl" Content="Export URL" HorizontalAlignment="Left" Margin="0 3"/>
-                    <CheckBox x:Name="Find_Missing_Material" Content="Find Missing Material" HorizontalAlignment="Left" Margin="0 3" />
-                    <CheckBox x:Name="Export_Naviswork_Parameters" Content="Naviswork Paramter(All)" HorizontalAlignment="Left" Margin="0 3"/>
-                    <Label Content="Default"/>
-                    <CheckBox x:Name="Default_Export_Setting" Content="Default" HorizontalAlignment="Left" Margin="0 3"/>
-                        
-                   
-      
+                <Label Content="Project Setting Directory"/>
+                <TextBox  x:Name="Project_Setting"/>
+                <Button Content="Browse" Name="Export_Setting" Width="70"  HorizontalAlignment="Left" Click="Export_Setting_Click" />
+
+
+
             </StackPanel>
+
+
                 
             <StackPanel Grid.Column="2">
                 <Label Content=" View List"/>
                 <Separator Margin="0 3"/>
-               
-                <ScrollViewer  x:Name="Scroll_Views" MaxHeight="150">
-                    <ListBox Name="ViewList" ItemsSource="{Binding}" SelectionMode="Multiple">
 
-                       
-
+                <ScrollViewer  x:Name="Scroll_Views" MaxHeight="150"  CanContentScroll="True">
+                    <ListBox Name="ViewList" ItemsSource="{Binding}" SelectionMode="Multiple" Height="150">
                     </ListBox>
-                    
-                    
                 </ScrollViewer>
 
-                <Button Content="Load All Views" Width="80" HorizontalAlignment="Left" Click="LoadViews"/>
-                
->>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
+             
                 <Separator Margin="0 3"/>
                 <Label Content="Select Project Directory"/>
                 <TextBox  x:Name="File_Path"/>
                 <Button Content="Browse" Name="Export_Directory" Width="70"  HorizontalAlignment="Left" Click="SelectDirectory" />
-<<<<<<< HEAD
+
                 <Separator Margin="0 6"/>
                 <Label Content="Project List"/>
-                <ScrollViewer  x:Name="Scroll_Projects" MaxHeight="150">
-                    <ListBox Name="ProjectList" ItemsSource="{Binding}" SelectionMode="Single"></ListBox>
+                <ScrollViewer  x:Name="Scroll_Projects" MaxHeight="150" VerticalScrollBarVisibility="Visible" CanContentScroll="True">
+                    <ListBox Name="ProjectList" ItemsSource="{Binding}" SelectionMode="Single" Loaded="ProjectList_Loaded" Height="150"/>
                 </ScrollViewer>
 
                 <Button Content="Select" Name="Select_Project" Width="70"  HorizontalAlignment="Left" Click="Select_Project_Click" />
-=======
->>>>>>> c2ed76ba885f232f76c2c684219e307e2c121235
+
 
             </StackPanel>
+                
             <Button x:Name="Export_Button" Content="Export"  Width="50" HorizontalAlignment="Center" Click="ExportNWC" Grid.Row="1"/>
             <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="487,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         </Grid>
