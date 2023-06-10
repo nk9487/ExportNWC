@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportNWC", "ExportNWC.cspr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{82C9B61F-AC52-4ED0-9F58-136FF6D3E2A5}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ExportProInstaller", "..\ExportProInstaller\ExportProInstaller.vdproj", "{5562A253-3688-4D45-960B-D458803D71B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,8 @@ Global
 		{FCA91EAB-2F14-4EC5-9018-EB59D6E81370}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCA91EAB-2F14-4EC5-9018-EB59D6E81370}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCA91EAB-2F14-4EC5-9018-EB59D6E81370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5562A253-3688-4D45-960B-D458803D71B5}.Debug|Any CPU.ActiveCfg = Debug
+		{5562A253-3688-4D45-960B-D458803D71B5}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

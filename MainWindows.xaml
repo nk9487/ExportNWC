@@ -71,7 +71,7 @@
                 <Separator Margin="0 6"/>
                 <Label Content="Project List"/>
                 <ScrollViewer  x:Name="Scroll_Projects" MaxHeight="150" VerticalScrollBarVisibility="Visible" CanContentScroll="True">
-                    <ListBox Name="ProjectList" ItemsSource="{Binding}" SelectionMode="Single" Loaded="ProjectList_Loaded" Height="150"/>
+                    <ListBox Name="ProjectList" ItemsSource="{Binding PROJECT_NUMBER}" SelectionMode="Single" Loaded="ProjectList_Loaded" Height="150"/>
                 </ScrollViewer>
 
                 <Button Content="Select" Name="Select_Project" Width="70"  HorizontalAlignment="Left" Click="Select_Project_Click" />

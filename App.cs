@@ -1,7 +1,10 @@
 ﻿using Autodesk.Revit.UI;
 using System;
 using System.Reflection;
+using System.Windows.Forms;
 using System.Windows.Media.Imaging;
+using System.Drawing.Imaging;
+using System.Windows.Media;
 
 namespace ExportNWC
 {
@@ -14,27 +17,26 @@ namespace ExportNWC
 
             String assName = Assembly.GetExecutingAssembly().Location;
 
-            string iconPath = System.IO.Path.GetDirectoryName(assName);
+            //String iconPath = System.IO.Path.GetDirectoryName(assName);
 
             //tab name
-            String tabName = "ExportNWC";
+            String tabName = "ExportPro";
             application.CreateRibbonTab(tabName);
 
             //create panel
-            RibbonPanel panelAddin = application.CreateRibbonPanel(tabName, "NWC");
+            RibbonPanel panelAddin = application.CreateRibbonPanel(tabName, "Export");
 
 
             // create push button
-            PushButtonData button1 = new PushButtonData("Btn1", "Export", assName, "ExportNWC.NwcOut");
+            PushButtonData nwcExportButton = new PushButtonData("nwcExportButton", "NWC", assName, "ExportNWC.NwcOut");
 
-            button1.LargeImage = new BitmapImage(new Uri(iconPath + @"\img\free.png"));
+            BitmapImage nwcButton = new BitmapImage(new Uri("pack://application:,,,/ExportNWC;component/Resource/img/nwc_export_button.png"));
 
-            panelAddin.AddItem(button1);
+            nwcExportButton.LargeImage = nwcButton;
+            panelAddin.AddItem(nwcExportButton);
 
             //Adding tool tip
-            button1.ToolTip = "Export nwc";
-
-
+            nwcExportButton.ToolTip = "Export nwc";
 
             return Result.Succeeded;
         }

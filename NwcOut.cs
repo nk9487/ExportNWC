@@ -16,12 +16,12 @@ namespace ExportNWC
         /// <inheritdoc/>
         /// 
       
-        UIDocument uidoc;
-        Application app;
-        Document doc;
-        ExternalCommandData CommandData;
-        private  string message;
-        ElementSet elements;
+        //UIDocument uidoc;
+        //Application app;
+        //Document doc;
+        //ExternalCommandData CommandData;
+        //private  string message;
+        //ElementSet elements;
 
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
@@ -34,13 +34,12 @@ namespace ExportNWC
             try { 
 
                 MainWindows window = new MainWindows(uidoc);
+
                 window.ShowDialog();
-                //start export process 
-               // window.Export_Button
-                //then close window
-                //window.Close();
 
-
+                // Show task completed dialog box
+ 
+                
                 return Result.Succeeded;
             }
 
