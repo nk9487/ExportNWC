@@ -24,6 +24,8 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace ExportNWC
 {
@@ -50,8 +52,8 @@ namespace ExportNWC
         private bool EXPORT_URL = false;
         private bool FIND_MISSING_MATERIAL = false;
 
-        private bool DEFAULT_EXPORT_SETTING = false;
-        private string EXPORT_SETTING ;
+        //private bool DEFAULT_EXPORT_SETTING = false;
+        public String EXPORT_SETTING  = Properties.Settings.Default.LastExportPath;
 
         private NavisworksExportOptions nwcOptions;
         private NavisworksCoordinates COORDINATE = NavisworksCoordinates.Shared;//SHARED OR INTERANL
@@ -65,12 +67,13 @@ namespace ExportNWC
         private ICollection<Element> VIEW;
         //private ICollection<Element> USER_SELECTED_3DVIEW;
 
-        private List<Dictionary<ElementId, String>> viewsName;
+        //private List<Dictionary<ElementId, String>> viewsName;
 
         //File read and save
-        private List<int> PROJECT_NUMBER = new List<int>();
+        public ObservableCollection<int> PROJECT_NUMBER = new ObservableCollection<int>();
         
         private List<ProjectSetting> PROJECT_LIST = new List<ProjectSetting>(); //STORES ALL PROJECT WITH THEIR ID PATH COORDINATE
+
 
         public MainWindows(UIDocument uiDoc)
         {
@@ -91,43 +94,72 @@ namespace ExportNWC
                 LoadViews();
                 IsSetUp = false;
             }
-
+            
 
         }
 
+        //Function to grab the "JSON" file that contain project export setting
+        private void Export_Setting_Click(object sender, RoutedEventArgs e)
+        {
+            // Create FolderBrowserDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "(*.json)|"
+            };
+            // Show FolderBrowserDialog
 
+            /*if (!string.IsNullOrEmpty(EXPORT_SETTING))
+            {
+                EXPORT_SETTING = Properties.Settings.Default.LastExportPath;
+
+            }*/
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // Get selected File
+                EXPORT_SETTING = openFileDialog.FileName;
+                
+                Project_Setting.Text = EXPORT_SETTING;
+
+                // save the setting of the global parameter
+                Properties.Settings.Default.LastExportPath = EXPORT_SETTING;
+                Properties.Settings.Default.Save();
+                Load_Project();
+            }
+
+            Load_Project();
+
+        }
         private void Load_Project()
         {
 
             //To Do: add function to add default nwc setting when project is selected
+            //EXPORT_SETTING = @"C:\Users\namun\OneDrive\Desktop\NWC\ExportSetting.json";
 
-
-            string path = @"C:\Users\namun\OneDrive\Desktop\NWC\ExportSetting.json";
-
-            string jsonContent = File.ReadAllText(path);
-
-
-
-            PROJECT_LIST = JsonConvert.DeserializeObject<List<ProjectSetting>>(jsonContent);
-
-            foreach (ProjectSetting s in PROJECT_LIST)
+         
+            if (EXPORT_SETTING != null)
             {
-                int id = s.Id;
-                PROJECT_NUMBER.Add(id);
-            }
+                string jsonContent = File.ReadAllText(EXPORT_SETTING);
+                PROJECT_LIST = JsonConvert.DeserializeObject<List<ProjectSetting>>(jsonContent);
+                PROJECT_NUMBER.Clear();
+
+                foreach (ProjectSetting s in PROJECT_LIST)
+                {
+                    int id = s.Id;
+                    PROJECT_NUMBER.Add(id);
+                }
 
                 ProjectList.ItemsSource = PROJECT_NUMBER;//project list ui display
 
+            }
 
         }
+
 
         //Read and write a text file 
         //Create n x 3 matrix that stores project number, path and 
         //
         private void Select_Project_Click(object sender, RoutedEventArgs e)
         {
-            
-
 
             foreach (ProjectSetting s in PROJECT_LIST)
             {
@@ -184,20 +216,7 @@ namespace ExportNWC
 
         }
 
-        //Function to grab the "JASON" file that contain project export setting
-        private void Export_Setting_Click(object sender, RoutedEventArgs e)
-        {
-            // Create FolderBrowserDialog
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "(*.json)";
-            // Show FolderBrowserDialog
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-            // Get selected File
-            EXPORT_SETTING = openFileDialog.FileName;
-            Project_Setting.Text = EXPORT_SETTING;
-            }
-        }
+
 
 
 
@@ -323,18 +342,19 @@ namespace ExportNWC
 
         private void Default_Setting()
         {
-            CONVERT_ELEMENT_PROPERTIES = true;
-            CONVERT_ELEMENT_PROPERTIES = true;
-            CONVERT_LINK_CAD_FORMATS = true;
-            EXPORT_ELEMENT_ID = true;
-            DIVIDE_FILE_TO_LEVEL = true;
-            EXPORT_LINK = true;
-            EXPORT_PART = true;
-            EXPORT_ROOM_ATTRIBUTE = true;
-            EXPORT_ROOM_GEOMETRY = true;
-            EXPORT_URL = true;
-            FIND_MISSING_MATERIAL = true;
-            DEFAULT_EXPORT_SETTING = true;
+
+            Convert_Element_Properties.IsChecked = true;
+            Convert_Linked_CAD_Formats.IsChecked = true;
+            Export_Coordinate.IsChecked = true;
+            Export_ElementID.IsChecked = true;
+            Divide_To_Level.IsChecked = true;
+            Export_Link.IsChecked = true;
+            Export_Parts.IsChecked = true;
+            Export_Room_Attribute.IsChecked = true;
+            Export_Room_Geometery.IsChecked = true;
+            Export_Scope.IsChecked = true;
+            Export_URl.IsChecked = true;
+            Find_Missing_Material.IsChecked = true;
             COORDINATE = NavisworksCoordinates.Internal;//SHARED OR INTERANL
             EXPORT_SCOPE = NavisworksExportScope.Model;//MODEL/VIEW;
             ;
@@ -344,17 +364,17 @@ namespace ExportNWC
         {
             if (Default_Export_Setting.IsChecked == false)
                 Convert_Element_Properties.IsEnabled = true;
-            Convert_Linked_CAD_Formats.IsEnabled = true;
-            Export_Coordinate.IsEnabled = true;
-            Export_ElementID.IsEnabled = true;
-            Divide_To_Level.IsEnabled = true;
-            Export_Link.IsEnabled = true;
-            Export_Parts.IsEnabled = true;
-            Export_Room_Attribute.IsEnabled = true;
-            Export_Room_Geometery.IsEnabled = true;
-            Export_Scope.IsEnabled = true;
-            Export_URl.IsEnabled = true;
-            Find_Missing_Material.IsEnabled = true;
+                Convert_Linked_CAD_Formats.IsEnabled = true;
+                Export_Coordinate.IsEnabled = true;
+                Export_ElementID.IsEnabled = true;
+                Divide_To_Level.IsEnabled = true;
+                Export_Link.IsEnabled = true;
+                Export_Parts.IsEnabled = true;
+                Export_Room_Attribute.IsEnabled = true;
+                Export_Room_Geometery.IsEnabled = true;
+                Export_Scope.IsEnabled = true;
+                Export_URl.IsEnabled = true;
+                Find_Missing_Material.IsEnabled = true;
         }
 
 
@@ -403,9 +423,14 @@ namespace ExportNWC
 
                 }
             }
+
+            TaskDialog completedDialog = new TaskDialog("Export Completed");
+            completedDialog.MainContent = "All NWC exported :)";
+            completedDialog.CommonButtons = TaskDialogCommonButtons.Ok;
+            completedDialog.Show();
         }
 
-        // Defines a project setting 
+        // Defines a project setting class
         private class ProjectSetting
         {
             public ProjectSetting(int id, string path, string coordinate)
